@@ -14,3 +14,6 @@ CLAUDE.md
 
 # Logs
 *.log
+
+# Local submission files (not for the public repo)
+submission/

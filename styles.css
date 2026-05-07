@@ -34,8 +34,8 @@ body {
     background: var(--bg-primary);
     color: var(--text-primary);
     font-family: var(--serif);
-    font-size: 18px;
-    line-height: 1.6;
+    font-size: 20px;
+    line-height: 1.7;
     overflow-x: hidden;
     min-height: 100vh;
     position: relative;
@@ -118,7 +118,7 @@ body {
 
 .title {
     font-family: var(--mono);
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 300;
     letter-spacing: 0.3em;
     text-transform: uppercase;
@@ -131,8 +131,8 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 8px 12px;
-    font-size: 0.9rem;
+    gap: 8px 14px;
+    font-size: 1rem;
     color: var(--text-secondary);
     font-family: var(--mono);
     font-weight: 300;
@@ -190,13 +190,13 @@ body {
    ========================================================= */
 .section-title {
     font-family: var(--serif);
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     font-weight: 600;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--accent-hover);
-    margin-bottom: 20px;
-    padding-bottom: 8px;
+    margin-bottom: 22px;
+    padding-bottom: 10px;
     border-bottom: 1px solid var(--divider);
     position: relative;
 }
@@ -229,12 +229,12 @@ body {
 }
 
 .summary p {
-    font-size: 1.1rem;
-    line-height: 1.7;
+    font-size: 1.25rem;
+    line-height: 1.75;
     color: var(--text-secondary);
     font-style: italic;
     text-align: center;
-    max-width: 800px;
+    max-width: 850px;
     margin: 0 auto;
 }
 
@@ -329,7 +329,7 @@ body {
 
 .entry-title {
     font-family: var(--serif);
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 600;
     color: var(--accent-hover);
     letter-spacing: 0.02em;
@@ -337,13 +337,13 @@ body {
 
 .entry-subtitle {
     font-family: var(--mono);
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.15em;
     color: var(--silver);
-    margin-top: 18px;
-    margin-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 12px;
 }
 
 .entry-subtitle:first-child {
@@ -352,7 +352,7 @@ body {
 
 .entry-date {
     font-family: var(--mono);
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     color: var(--text-muted);
     font-weight: 300;
 }
@@ -364,11 +364,11 @@ body {
 
 .entry ul li {
     position: relative;
-    padding-left: 20px;
-    margin-bottom: 8px;
+    padding-left: 22px;
+    margin-bottom: 10px;
     color: var(--text-secondary);
-    font-size: 1rem;
-    line-height: 1.6;
+    font-size: 1.1rem;
+    line-height: 1.7;
 }
 
 .entry ul li::before {
@@ -429,8 +429,8 @@ body {
 
 .skill-tag {
     font-family: var(--mono);
-    font-size: 0.78rem;
-    padding: 5px 12px;
+    font-size: 0.9rem;
+    padding: 6px 14px;
     background: var(--tag-bg);
     border: 1px solid var(--tag-border);
     border-radius: 3px;
@@ -490,19 +490,324 @@ body {
 .lang-name {
     display: block;
     font-family: var(--serif);
-    font-size: 1.15rem;
+    font-size: 1.35rem;
     font-weight: 600;
     color: var(--accent-hover);
-    margin-bottom: 4px;
+    margin-bottom: 5px;
 }
 
 .lang-level {
     display: block;
     font-family: var(--mono);
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: var(--silver);
     letter-spacing: 0.1em;
     text-transform: uppercase;
+}
+
+/* =========================================================
+   READING ROW (Bookshelf + Humanities side by side)
+   ========================================================= */
+.reading-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 40px;
+    animation: fadeIn 1s ease-out 0.5s both;
+    margin-bottom: 40px;
+    scroll-margin-top: 30px;
+}
+
+.reading-col {
+    min-width: 0;
+    scroll-margin-top: 30px;
+}
+
+.vertical-divider.tall::before {
+    content: '✦';
+    top: 30%;
+}
+
+.reading-subtitle {
+    color: var(--text-secondary);
+    font-style: italic;
+    font-size: 1.1rem;
+    margin: -10px 0 28px;
+    line-height: 1.6;
+}
+
+.section-title i {
+    color: var(--silver);
+    margin-right: 8px;
+    font-size: 0.9em;
+}
+
+/* Original Arabic title next to English section title */
+.title-orig {
+    font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+    font-weight: 500;
+    font-size: 0.85em;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--silver);
+    margin-left: 6px;
+    direction: rtl;
+    unicode-bidi: isolate;
+}
+
+/* Highlight flash when navigated via anchor */
+.reading-col:target .section-title,
+#bookshelf:target .section-title,
+#humanities:target .section-title {
+    animation: targetGlow 2s ease-out;
+}
+
+@keyframes targetGlow {
+    0% {
+        text-shadow: 0 0 0 rgba(255, 255, 255, 0);
+        transform: scale(1);
+    }
+    30% {
+        text-shadow: 0 0 25px rgba(255, 255, 255, 0.7),
+                     0 0 50px rgba(255, 255, 255, 0.3);
+        transform: scale(1.05);
+    }
+    100% {
+        text-shadow: 0 0 0 rgba(255, 255, 255, 0);
+        transform: scale(1);
+    }
+}
+
+/* Bookshelf link in contacts bar */
+.bookshelf-link {
+    color: var(--accent-hover) !important;
+    cursor: pointer;
+    position: relative;
+}
+
+.bookshelf-link i {
+    color: var(--accent-hover) !important;
+    transition: transform 0.3s ease;
+}
+
+.bookshelf-link:hover i {
+    transform: rotate(-8deg) scale(1.1);
+}
+
+.bookshelf-link::after {
+    content: '↓';
+    margin-left: 4px;
+    font-size: 0.8em;
+    opacity: 0.6;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.bookshelf-link:hover::after {
+    transform: translateY(3px);
+    opacity: 1;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    font-style: italic;
+    font-size: 1rem;
+    margin: -10px auto 35px;
+    max-width: 600px;
+}
+
+.bookshelf-group {
+    margin-bottom: 32px;
+}
+
+.bookshelf-group:last-child {
+    margin-bottom: 0;
+}
+
+.bookshelf-status {
+    font-family: var(--mono);
+    font-size: 0.95rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--silver);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.bookshelf-status.reading .status-dot {
+    background: #ffffff;
+    box-shadow: 0 0 8px #ffffff, 0 0 16px rgba(255, 255, 255, 0.5);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.bookshelf-status.finished .status-dot {
+    background: var(--silver);
+    box-shadow: 0 0 4px var(--silver);
+}
+
+.bookshelf-status.wishlist .status-dot {
+    background: transparent;
+    border: 1px solid var(--silver);
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.2);
+    }
+}
+
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+}
+
+.books-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.book-card {
+    display: flex;
+    align-items: stretch;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--divider);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    min-height: 90px;
+}
+
+.book-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--divider-strong);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.08);
+}
+
+.book-spine {
+    width: 6px;
+    background: linear-gradient(
+        to bottom,
+        var(--silver) 0%,
+        rgba(192, 192, 192, 0.3) 50%,
+        var(--silver) 100%
+    );
+    flex-shrink: 0;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+.book-card:nth-child(3n+1) .book-spine {
+    background: linear-gradient(
+        to bottom,
+        #d4d4d4 0%,
+        rgba(212, 212, 212, 0.4) 50%,
+        #d4d4d4 100%
+    );
+}
+
+.book-card:nth-child(3n+2) .book-spine {
+    background: linear-gradient(
+        to bottom,
+        #ffffff 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        #ffffff 100%
+    );
+}
+
+.book-info {
+    padding: 14px 16px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+}
+
+.book-title {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--accent-hover);
+    margin-bottom: 5px;
+    line-height: 1.35;
+}
+
+.book-author {
+    font-family: var(--mono);
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    font-weight: 300;
+}
+
+.book-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: 3px 10px;
+    background: var(--tag-bg);
+    border: 1px solid var(--tag-border);
+    border-radius: 2px;
+    color: var(--silver);
+    align-self: flex-start;
+}
+
+/* Humanities — original Arabic title */
+.book-orig {
+    display: block;
+    margin-top: 3px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85em;
+    color: var(--silver);
+    font-weight: 400;
+    direction: rtl;
+    text-align: right;
+    opacity: 0.85;
+}
+
+.book-card.humanities .book-spine {
+    background: linear-gradient(
+        to bottom,
+        #c9b97a 0%,
+        rgba(201, 185, 122, 0.4) 50%,
+        #c9b97a 100%
+    );
+    box-shadow: 0 0 8px rgba(201, 185, 122, 0.3);
+}
+
+.humanities-link i {
+    color: var(--accent-hover) !important;
+}
+
+/* Arabic original next to English label in contacts bar */
+.contact-orig {
+    font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+    font-size: 1.05em;
+    font-weight: 500;
+    color: var(--silver);
+    margin-left: 4px;
+    direction: rtl;
+    unicode-bidi: isolate;
+    letter-spacing: 0;
 }
 
 /* =========================================================
@@ -513,7 +818,7 @@ body {
     text-align: center;
     color: var(--text-muted);
     font-family: var(--mono);
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     letter-spacing: 0.05em;
 }
 
@@ -561,7 +866,8 @@ body {
         padding: 40px 25px;
     }
 
-    .split-row {
+    .split-row,
+    .reading-row {
         grid-template-columns: 1fr;
         gap: 30px;
     }
@@ -583,6 +889,10 @@ body {
 
     .languages-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .books-grid {
+        grid-template-columns: 1fr;
     }
 
     .contacts {
